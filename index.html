@@ -1,10 +1,11 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WS Design | Tech & Creative Studio</title>
+    <title>WS Design | Studio de Tecnologia e Performance</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -15,83 +16,119 @@
             --secondary: #3a7bd5;
             --dark: #0f172a;
             --light: #f8fafc;
+            --card-bg: #1e293b;
         }
 
         body { 
             font-family: 'Inter', sans-serif; 
-            transition: 0.3s; 
-            background-color: var(--light);
-            margin: 0;
-            padding: 0;
-        }
-
-        body.dark-theme {
             background-color: var(--dark);
             color: white;
+            overflow-x: hidden;
         }
 
-        
+        /* --- AJUSTE DAS LETRAS ESCURAS --- */
+        h1, h2, h3, h4, h5, h6, .fw-bold, .navbar-brand {
+            color: #ffffff !important;
+        }
+
+        p, .text-muted {
+            color: #cbd5e1 !important; /* Branco levemente acinzentado para melhor leitura */
+        }
+        /* ---------------------------------- */
+
+        /* Navbar Premium */
         .navbar { 
-            backdrop-filter: blur(10px); 
-            background: rgba(255,255,255,0.9) !important; 
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding: 10px 0;
-            z-index: 2000;
+            backdrop-filter: blur(15px); 
+            background: rgba(15, 23, 42, 0.8) !important; 
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 15px 0;
         }
 
-        .dark-theme .navbar { 
-            background: rgba(15, 23, 42, 0.9) !important; 
-            border-color: rgba(255,255,255,0.1); 
-        }
-
-        
         .logo-box {
-            height: 48px; 
-            width: auto;
+            height: 42px; 
             background: white;
-            padding: 4px 10px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border: 1px solid rgba(0,210,255,0.2);
-            object-fit: contain;
+            padding: 5px 12px;
+            border-radius: 10px;
         }
 
-       
+        /* Hero Comercial */
         .hero {
-            padding: 160px 0 100px; 
-            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
-            color: white;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+            padding: 180px 0 140px; 
+            background: radial-gradient(circle at top right, rgba(0, 210, 255, 0.15), transparent),
+                        linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 95%, 0% 100%);
         }
 
+        /* Cards de Serviços */
         .service-card {
-            border: none;
-            border-radius: 15px;
-            transition: 0.3s;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: var(--card-bg);
             height: 100%;
         }
+        .service-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .icon-box {
+            width: 64px; height: 64px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
 
-        .dark-theme .service-card { background: #1e293b; color: white; }
-        .service-card:hover { transform: translateY(-10px); }
+        /* Seção de Processo */
+        .step-number {
+            font-size: 3rem;
+            font-weight: 700;
+            opacity: 0.1;
+            position: absolute;
+            top: 10px; right: 20px;
+        }
+
+        /* Badge de Status */
+        .badge-status {
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+        }
 
         .project-img {
-            height: 220px;
+            height: 240px;
             width: 100%;
             object-fit: cover;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: 0.5s;
         }
 
-        #theme-toggle { cursor: pointer; font-size: 24px; transition: 0.3s; color: var(--primary); }
-
-        .badge-tech {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .service-card:hover .project-img {
+            transform: scale(1.1);
         }
 
-        footer { background: #0a0f1c; color: #94a3b8; }
+        footer { background: #070b14; padding: 80px 0 30px; }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            padding: 12px 30px;
+        }
     </style>
 </head>
 <body>
@@ -100,44 +137,129 @@
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="#">
             <img src="logoss.png" alt="WS Design" class="logo-box me-2">
-            <span class="fw-bold text-uppercase d-none d-sm-inline dark-theme-text" style="letter-spacing: 1px;">
+            <span class="fw-bold text-uppercase text-white" style="letter-spacing: 1px;">
                 WS<span class="text-primary">Design</span>
             </span>
         </a>
-        <div class="ms-auto d-flex align-items-center">
-            <i class="ri-moon-line me-3" id="theme-toggle"></i>
-            <a href="https://wa.me/5511945756790" class="btn btn-primary rounded-pill px-4 fw-bold">Orçamento</a>
+        <div class="ms-auto">
+            <a href="https://wa.me/5511945756790" class="btn btn-primary rounded-pill fw-bold shadow-lg">Solicitar Orçamento</a>
         </div>
     </div>
 </nav>
 
 <section class="hero text-center">
-    <div class="container" data-aos="zoom-out">
-        <span class="badge bg-primary mb-3 px-3 py-2 rounded-pill">UI/UX & DEVELOPMENT</span>
-        <h1 class="display-3 fw-bold">Elevando o nível da sua <br><span class="text-primary">Presença Digital.</span></h1>
-        <p class="lead mb-4 opacity-75">Criação de sites, portfólios e identidades visuais de alto padrão.</p>
-        <a href="#projetos" class="btn btn-primary btn-lg rounded-pill px-5 shadow">Explorar Portfólio</a>
+    <div class="container" data-aos="fade-up">
+        <div class="badge-status mb-3">TECNOLOGIA & PERFORMANCE</div>
+        <h1 class="display-3 fw-bold mb-4">Transformamos sua Visão em <br><span class="text-primary">Resultados Digitais.</span></h1>
+        <p class="lead mb-5 opacity-75 mx-auto" style="max-width: 700px;">
+            A WS Design combina engenharia de software, marketing estratégico e design de alta fidelidade para criar experiências que vendem e escalam seu negócio.
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="#projetos" class="btn btn-primary btn-lg rounded-pill px-5">Ver Portfólio de Sucesso</a>
+            <a href="#servicos" class="btn btn-outline-light btn-lg rounded-pill px-5">Nossa Expertise</a>
+        </div>
+    </div>
+</section>
+
+<section id="servicos" class="py-5">
+    <div class="container py-5">
+        <div class="row align-items-end mb-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h2 class="display-5 fw-bold">Soluções <span class="text-primary">End-to-End</span></h2>
+                <p class="text-muted">Do registro do domínio à manutenção do software, cuidamos de toda a sua infraestrutura digital.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="card service-card p-4">
+                    <div class="icon-box"><i class="ri-rocket-2-line"></i></div>
+                    <h5 class="fw-bold">Hospedagem & Domínios</h5>
+                    <p class="text-muted small">Infraestrutura em nuvem de alta disponibilidade, e-mails profissionais e segurança SSL completa para sua tranquilidade.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="card service-card p-4">
+                    <div class="icon-box"><i class="ri-line-chart-line"></i></div>
+                    <h5 class="fw-bold">Marketing & Growth</h5>
+                    <p class="text-muted small">Gestão de tráfego (Google/Meta Ads) e SEO focados em ROI. Não geramos apenas cliques, geramos lucro.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="card service-card p-4">
+                    <div class="icon-box"><i class="ri-terminal-window-line"></i></div>
+                    <h5 class="fw-bold">Desenvolvimento Web</h5>
+                    <p class="text-muted small">Sistemas personalizados, e-commerces e softwares sob medida utilizando as tecnologias mais modernas do mercado.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="card service-card p-4">
+                    <div class="icon-box"><i class="ri-shield-check-line"></i></div>
+                    <h5 class="fw-bold">Assistência Premium</h5>
+                    <p class="text-muted small">Suporte técnico especializado para correção, otimização e evolução contínua dos seus produtos digitais.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5" style="background: rgba(255,255,255,0.02);">
+    <div class="container py-5">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="fw-bold">Como trabalhamos</h2>
+            <p class="text-muted">Transparência e agilidade em cada etapa.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-right">
+                <div class="p-4 border-start border-primary border-3 bg-dark">
+                    <span class="text-primary fw-bold">01. Diagnóstico</span>
+                    <h5>Entendemos seu desafio e definimos os KPIs de sucesso.</h5>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="p-4 border-start border-primary border-3 bg-dark">
+                    <span class="text-primary fw-bold">02. Execução</span>
+                    <h5>Desenvolvimento ágil com entregas parciais para validação.</h5>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-left">
+                <div class="p-4 border-start border-primary border-3 bg-dark">
+                    <span class="text-primary fw-bold">03. Lançamento</span>
+                    <h5>Deploy, monitoramento de métricas e suporte contínuo.</h5>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 <section id="projetos" class="py-5">
-    <div class="container">
+    <div class="container py-5">
         <div class="text-center mb-5" data-aos="fade-up">
-            <h2 class="fw-bold">Projetos em Destaque</h2>
-            <p class="text-muted">Trabalhos reais entregues para clientes.</p>
+            <h2 class="display-6 fw-bold">Cases de Sucesso</h2>
+            <p class="text-muted">Soluções reais que geram valor para nossos parceiros.</p>
         </div>
-        
         <div class="row g-4" id="gallery-container">
             </div>
     </div>
 </section>
 
-<footer class="py-5 text-center border-top">
+<section class="py-5 text-center">
+    <div class="container py-5 card service-card border-primary">
+        <div class="p-5">
+            <h2 class="fw-bold mb-4">Pronto para digitalizar seu negócio?</h2>
+            <p class="mb-5 opacity-75">Agende uma consultoria gratuita e receba um plano de ação para sua empresa.</p>
+            <a href="https://wa.me/5511945756790" class="btn btn-primary btn-lg rounded-pill px-5">Falar com um Especialista</a>
+        </div>
+    </div>
+</section>
+
+<footer class="text-center">
     <div class="container">
-        <p class="mb-2">© 2026 <strong>WS Design</strong>. Todos os direitos reservados.</p>
-        <div class="d-flex justify-content-center gap-3">
-            <a href="https://github.com/WSdesing" target="_blank" class="text-secondary fs-3"><i class="ri-github-fill"></i></a>
-            <a href="https://wa.me/5511945756790" target="_blank" class="text-secondary fs-3"><i class="ri-whatsapp-line"></i></a>
+        <img src="logoss.png" alt="WS Design" class="logo-box mb-4">
+        <p class="mb-4">© 2026 <strong>WS Design - Studio de Tecnologia</strong>.<br>Transformando bits em negócios.</p>
+        <div class="d-flex justify-content-center gap-4 mb-4">
+            <a href="https://github.com/WSdesing" class="text-white fs-4"><i class="ri-github-fill"></i></a>
+            <a href="https://wa.me/5511945756790" class="text-white fs-4"><i class="ri-whatsapp-line"></i></a>
         </div>
     </div>
 </footer>
@@ -148,66 +270,45 @@
 <script>
     AOS.init({ duration: 1000, once: true });
 
-    
-    const themeBtn = document.getElementById('theme-toggle');
-    themeBtn.onclick = () => {
-        document.body.classList.toggle('dark-theme');
-        const isDark = document.body.classList.contains('dark-theme');
-        themeBtn.className = isDark ? 'ri-sun-line me-3' : 'ri-moon-line me-3';
-    };
-
-    
     const projetos = [
         { 
             img: 'https://pereirasantosconstrutora.com.br/logo.png', 
             titulo: 'Pereira & Santos Construtora', 
-            desc: 'Site institucional completo com Dark Mode e formulário de orçamento.',
-            git: 'https://github.com/WSdesing/P-S-construtora.git',
+            desc: 'Ecossistema digital completo: Site institucional, Dark Mode inteligente e sistema de captação de leads.',
             live: 'https://pereirasantosconstrutora.com.br/',
-            tags: ['Bootstrap 5', 'JS', 'PHP']
+            tags: ['Enterprise', 'PHP', 'SEO']
         },
         { 
             img: 'https://pereirasantosconstrutora.com.br/logo.png', 
-            titulo: 'Landing Page de Vendas', 
-            desc: 'Página otimizada para conversão e captura de leads de alta performance.',
-            git: 'https://wsdesing.github.io/lading-pages-Construtora/',
+            titulo: 'Landing Page de Alta Conversão', 
+            desc: 'Página de vendas focada em performance, otimizada para campanhas de tráfego pago.',
             live: 'https://wsdesing.github.io/lading-pages-Construtora/',
-            tags: ['UI Design', 'HTML/CSS']
+            tags: ['Marketing', 'UX Design']
         },
-        {
-            img:"thyump.png", 
-            titulo: 'Landing Page Creative', 
-            desc: 'Landing page moderna com foco em design limpo e experiência do usuário.',
-            git: 'https://github.com/wsdesing/lading-page',
+        { 
+            img: 'thyump.png', 
+            titulo: 'Creative Portfolio Studio', 
+            desc: 'Interface minimalista focada em experiência do usuário e animações fluídas para marcas criativas.',
             live: 'https://wsdesing.github.io/lading-page/',
-            tags: ['HTML5', 'CSS3', 'AOS']
+            tags: ['UI/UX', 'Interactive']
         }
-    
-    
-    
-    
     ];
 
     const container = document.getElementById('gallery-container');
     projetos.forEach(p => {
         container.innerHTML += `
-            <div class="col-md-6" data-aos="fade-up">
+            <div class="col-md-6 col-lg-4" data-aos="fade-up">
                 <div class="card service-card overflow-hidden">
-                    <img src="${p.img}" class="img-fluid project-img" alt="${p.titulo}">
+                    <div class="project-img-container">
+                        <img src="${p.img}" class="img-fluid project-img" alt="${p.titulo}">
+                    </div>
                     <div class="p-4">
                         <div class="mb-2">
                             ${p.tags.map(t => `<span class="badge bg-primary-subtle text-primary border border-primary-subtle badge-tech me-1">${t}</span>`).join('')}
                         </div>
-                        <h4 class="fw-bold">${p.titulo}</h4>
+                        <h4 class="fw-bold h5 text-white">${p.titulo}</h4>
                         <p class="text-muted small">${p.desc}</p>
-                        <div class="d-flex gap-2 mt-4">
-                            <a href="${p.live}" target="_blank" class="btn btn-primary btn-sm rounded-pill px-3">
-                                <i class="ri-external-link-line"></i> Site Online
-                            </a>
-                            <a href="${p.git}" target="_blank" class="btn btn-outline-dark btn-sm rounded-pill px-3">
-                                <i class="ri-github-fill"></i> Código
-                            </a>
-                        </div>
+                        <a href="${p.live}" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill px-4 mt-3">Ver Case Online</a>
                     </div>
                 </div>
             </div>
